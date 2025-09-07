@@ -1,21 +1,21 @@
 import { useState } from 'react';
-import Hero from './components/Hero';
+import HeroVideo from './components/HeroVideo';
 import About from './components/About';
-import Benefits from './components/Benefits';
-import Testimonials from './components/Testimonials';
+import Partners from './components/Partners';
+import Mentors from './components/Mentors';
 
 export default function App() {
   const [open, setOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-black text-white font-inter">
-      {/* Simple top nav */}
       <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/40 bg-black/60 border-b border-white/10">
         <nav className="container mx-auto flex items-center justify-between px-4 py-3">
           <a href="#home" className="text-sm sm:text-base font-semibold tracking-wide">AlgoUniversity · AU Hiring Tournament</a>
           <div className="hidden sm:flex gap-6 text-sm text-white/80">
             <a href="#about" className="hover:text-white transition">About</a>
-            <a href="#benefits" className="hover:text-white transition">Benefits</a>
+            <a href="#partners" className="hover:text-white transition">Hiring Partners</a>
+            <a href="#mentors" className="hover:text-white transition">Mentors</a>
             <a href="#testimonials" className="hover:text-white transition">Testimonials</a>
           </div>
           <button onClick={() => setOpen(true)} className="ml-4 inline-flex items-center rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-gradient-to-r hover:from-white hover:to-[#8ef] transition">
@@ -25,20 +25,24 @@ export default function App() {
       </header>
 
       <main>
-        <section id="home" className="pt-16 sm:pt-20">
-          <Hero onRegister={() => setOpen(true)} />
+        {/* 1) Landing section: autoplay tournament video */}
+        <section id="home" className="pt-14 sm:pt-16">
+          <HeroVideo onRegister={() => setOpen(true)} />
         </section>
 
+        {/* 2) About */}
         <section id="about">
           <About onRegister={() => setOpen(true)} />
         </section>
 
-        <section id="benefits">
-          <Benefits onRegister={() => setOpen(true)} />
+        {/* 3) Separate section: Hiring & Referral Partners */}
+        <section id="partners">
+          <Partners />
         </section>
 
-        <section id="testimonials" className="pb-24">
-          <Testimonials />
+        {/* 4) Mentors then Testimonials */}
+        <section id="mentors" className="pb-24">
+          <Mentors />
         </section>
       </main>
 
